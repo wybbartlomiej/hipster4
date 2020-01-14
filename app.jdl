@@ -1,0 +1,29 @@
+entity Author {
+	firstName String
+    lastName String
+}
+
+entity Book {
+	name String
+    writedAt LocalDate
+}
+
+entity Customer {
+	firstName String
+    lastName String
+    email String
+}
+
+entity Rent {
+    term LocalDate
+}
+
+relationship OneToMany {
+	Author to Book{author},
+	Customer to Rent{customer},
+    Book to Rent{book}
+}
+
+relationship OneToOne {
+    Customer{user(email)} to User{customer(email)}
+}

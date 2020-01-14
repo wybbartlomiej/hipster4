@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rent">
+            <h2><span>Rent</span> {{rent.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Term</span></dt>
+                <dd>
+                    <span>{{rent.term}}</span>
+                </dd>
+                <dt><span>Customer</span></dt>
+                <dd>
+                    <div *ngIf="rent.customer">
+                        <a [routerLink]="['/customer', rent.customer?.id, 'view']">{{rent.customer?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Book</span></dt>
+                <dd>
+                    <div *ngIf="rent.book">
+                        <a [routerLink]="['/book', rent.book?.id, 'view']">{{rent.book?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rent', rent.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
